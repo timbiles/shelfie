@@ -1,4 +1,4 @@
-require('dotenv').congif();
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -11,11 +11,15 @@ const app = express();
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
-    app.get('db', db);
+    //   console.log(db)
+    app.set('db', db);
   })
   .catch(err => {
     console.log(err);
   });
+
+app.get('/api/inventory', controller.create);
+// app.post('/api/product', controller.read);
 
 app.use(bodyParser());
 
