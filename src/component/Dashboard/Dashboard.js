@@ -28,12 +28,12 @@ export default class Dashboard extends Component {
 
     let inventoryMap = inventory.map((e, i) => {
       return (
-        <div key={i} className="pic-box">
+        <div key={i} className="input-box">
           <div>
             <img 
             src={e.img}
-            height='150px'
-            width='150px'
+            height='200px'
+            width='300px'
             />
           </div>
           <div>
