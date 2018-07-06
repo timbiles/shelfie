@@ -26,7 +26,34 @@ const create = (req, res, next) => {
     });
 };
 
+
+const del = (req, res, next)=>{
+    const db = req.app.get('db');
+
+    db.delete_product(req.params.id)
+    .then(response=>{
+        res.status(200).send(response)
+    })
+    .catch(err=>{
+        res.status(500).send(err)
+    })
+}
+
+// const update = (req,res,next)=>{
+//     const db = req.app.get('db');
+
+//     db.update_product(params.id)
+//     .then(response=>{
+//         res.status(200).send(response)
+//     })
+//     .catch(err=>{
+//         res.status(500).send(err)
+//     })
+// }
+
 module.exports = {
   getAll,
-  create
+  create,
+  del
+//   update
 };

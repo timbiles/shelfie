@@ -35,7 +35,7 @@ export default class Form extends Component {
   handleSubmit = id => {
     let { imgInput, nameInput, priceInput } = this.state;
     axios
-      .post('http://localhost:3003./api/product', {
+      .post('/api/product', {
         name: nameInput,
         price: priceInput,
         img: imgInput
@@ -60,11 +60,13 @@ export default class Form extends Component {
         <h3 className="input-text">Image URL:</h3>
         <input
           value={imgInput}
+          placeholder="Image URL"
           onChange={e => this.handlePictureChange(e.target.value)}
         />
         <h3 className="input-text">Product Name:</h3>
         <input
           value={nameInput}
+          placeholder="Name"
           onChange={e => this.handleNameChange(e.target.value)}
         />
         <h3 className="input-text">Price:</h3>

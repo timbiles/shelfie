@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  padding-left: 30px;
+  padding-top: 30px;
+  background-color: #ab2a19;
+  height: 100px;
+}
+
+.title {
+    color: white;
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 10px;
+}

@@ -22,20 +22,20 @@ class App extends Component {
   }
 
   makeRequest = () => {
-    axios.get('/api/inventory').then(res => {
+    axios.get('/api/product').then(res => {
       console.log(res);
       this.setState({ inventory: res.data });
     });
   };
 
-
-
   render() {
     return (
       <div className="App">
         <Header />
-        <Dashboard inventory={this.state.inventory} />
-        <Form get={this.makeRequest} />
+        <div className="main-body">
+          <Dashboard get={this.makeRequest} inventory={this.state.inventory} />
+          <Form get={this.makeRequest} />
+        </div>
       </div>
     );
   }

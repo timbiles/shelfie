@@ -19,8 +19,12 @@ massive(process.env.CONNECTION_STRING)
     console.log(err);
   });
 
-app.get('/api/inventory', controller.getAll);
+app.get('/api/product', controller.getAll);
 app.post('/api/product', controller.create);
+app.delete('/api/product/:id', controller.del);
+// app.put('/api/product/:id', controller.update);
+
+
 
 app.listen(port, () => {
   console.log(`Listening on Port:${port}`);

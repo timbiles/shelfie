@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './Dashboard.css';
 
 import Product from '../Product/Product';
@@ -15,19 +16,30 @@ export default class Dashboard extends Component {
     this.setState({ inventory: this.props.inventory });
   }
 
+  handleDelete = id => {
+    axios.delete(`/api/product/${id}`).then(() => {
+      this.props.get();
+    });
+  };
+
   render() {
     let { inventory } = this.props;
     console.log(inventory);
 
     let inventoryMap = inventory.map((e, i) => {
       return (
-        <div key={i} className="input-box">
+        <div key={i} className="pic-box">
           <div>
-            <div>{e.img}</div>
+            <img 
+            src={e.img}
+            height='150px'
+            width='150px'
+            />
           </div>
           <div>
             <div>{e.name}</div>
             <div>${e.price}</div>
+            <button onClick={id => this.handleDelete(e.id)}>Delete</button>
           </div>
         </div>
       );
