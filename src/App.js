@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Link, Switch} from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
@@ -17,20 +18,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/inventory').then(res => {
-      console.log(res)
-      this.setState({
-        inventory: res.data
-      });
-    });
+    this.makeRequest();
   }
+
+  makeRequest = () => {
+    axios.get('/api/inventory').then(res => {
+      console.log(res);
+      this.setState({ inventory: res.data });
+    });
+  };
+
+
 
   render() {
     return (
       <div className="App">
         <Header />
         <Dashboard inventory={this.state.inventory} />
-        <Form />
+        <Form get={this.makeRequest} />
       </div>
     );
   }

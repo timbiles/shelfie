@@ -32,16 +32,23 @@ export default class Form extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = id => {
     let { imgInput, nameInput, priceInput } = this.state;
     axios
-      .post('http://localhost:3003./api/product', { imgInput, nameInput, priceInput })
+      .post('http://localhost:3003./api/product', {
+        name: nameInput,
+        price: priceInput,
+        img: imgInput
+      })
       .then(res => {
-        console.log(res.data);
+        this.props.get();
+        // console.log(res.data);
       });
   };
 
   render() {
+    // console.log(this.state);
+    const { imgInput, nameInput, priceInput } = this.state;
     return (
       <div>
         <img
@@ -52,23 +59,25 @@ export default class Form extends Component {
         />
         <h3 className="input-text">Image URL:</h3>
         <input
-          type="text"
+          value={imgInput}
           onChange={e => this.handlePictureChange(e.target.value)}
         />
         <h3 className="input-text">Product Name:</h3>
         <input
-          type="text"
+          value={nameInput}
           onChange={e => this.handleNameChange(e.target.value)}
         />
         <h3 className="input-text">Price:</h3>
         <input
-          type="text"
+          value={priceInput}
           placeholder="0"
           onChange={e => this.handlePriceChange(e.target.value)}
         />
         <div className="btn-box">
-          <button onClick={this.handleCancel}>Cancel</button>
-          <button onClick={this.handleSubmit}>Add to Inventory</button>
+          <button onClick={() => this.handleCancel()}>Cancel</button>
+          <button onClick={id => this.handleSubmit(id)}>
+            Add to Inventory
+          </button>
         </div>
       </div>
     );

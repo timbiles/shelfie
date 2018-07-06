@@ -8,6 +8,7 @@ const port = 3003;
 const controller = require('./controller');
 
 const app = express();
+app.use(bodyParser());
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -18,10 +19,8 @@ massive(process.env.CONNECTION_STRING)
     console.log(err);
   });
 
-app.get('/api/inventory', controller.create);
-// app.post('/api/product', controller.read);
-
-app.use(bodyParser());
+app.get('/api/inventory', controller.getAll);
+app.post('/api/product', controller.create);
 
 app.listen(port, () => {
   console.log(`Listening on Port:${port}`);
