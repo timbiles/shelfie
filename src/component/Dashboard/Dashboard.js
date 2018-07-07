@@ -7,6 +7,7 @@ import Product from '../Product/Product';
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       inventory: []
     };
@@ -30,11 +31,7 @@ export default class Dashboard extends Component {
       return (
         <div key={i} className="input-box">
           <div>
-            <img 
-            src={e.img}
-            height='200px'
-            width='300px'
-            />
+            <img src={e.img} height="200px" width="300px" />
           </div>
           <div>
             <div>{e.name}</div>

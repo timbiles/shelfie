@@ -36,7 +36,9 @@
   justify-content: space-around;
 }
 
-.form-box {
-  border: solid 1px black;
+.form {
+  border-radius: 5%;
   background-color: #3ad886;
+  margin: 10px;
+  padding: 20px;
 }

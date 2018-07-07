@@ -34,7 +34,7 @@ class App extends Component {
         <Header />
         <div className="main-body">
           <Dashboard get={this.makeRequest} inventory={this.state.inventory} />
-          <Form classname='form-box' get={this.makeRequest} />
+          <div className="form"><Form classname='form-box' get={this.makeRequest} /></div>
         </div>
       </div>
     );
