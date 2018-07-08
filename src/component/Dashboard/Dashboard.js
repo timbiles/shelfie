@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
 
   render() {
     let { inventory } = this.props;
-    console.log(inventory);
+    // console.log(inventory);
 
     let inventoryMap = inventory.map((e, i) => {
       return (

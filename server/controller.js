@@ -41,8 +41,10 @@ const del = (req, res, next)=>{
 
 // const update = (req,res,next)=>{
 //     const db = req.app.get('db');
+//     const {id} = req.params;
+//     const {name, price, img} = req.body;
 
-//     db.update_product(params.id)
+//     db.update_product([img, name, price, id])
 //     .then(response=>{
 //         res.status(200).send(response)
 //     })
