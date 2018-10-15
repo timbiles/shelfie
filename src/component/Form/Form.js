@@ -43,7 +43,7 @@ export default class Form extends Component {
       })
       .then(res => {
         this.props.get();
-        // console.log(res.data);
+        this.setState({imgInput: ''})
       });
   };
 
@@ -58,7 +58,7 @@ export default class Form extends Component {
       })
       .then(res => {
         this.props.get();
-        // console.log(res.data);
+        this.setState({imgInput: ''})        
       });
     }
   };
@@ -72,7 +72,7 @@ export default class Form extends Component {
           <img
             src={imgInput || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfqyZEvnwCeipVPvwn1_B1qvz1XlbwDQUiK7t5YCHoVkX0SO3s"}
             alt="no img"
-            width="80%"
+            width="300px"
             height="200px"
           />
           <h3 className="input-text">Image URL:</h3>

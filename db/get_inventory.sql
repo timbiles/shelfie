@@ -1,1 +1,2 @@
-select * from products;
+select * from products
+ORDER BY id;
