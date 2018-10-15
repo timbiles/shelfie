@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import { Link, Switch} from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+// import routes from './routes'
+import {Link} from 'react-router-dom';
 
 import Dashboard from './component/Dashboard/Dashboard';
 import Form from './component/Form/Form';
@@ -23,7 +25,6 @@ class App extends Component {
 
   makeRequest = () => {
     axios.get('/api/product').then(res => {
-      console.log(res);
       this.setState({ inventory: res.data });
     });
   };

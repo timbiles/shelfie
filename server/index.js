@@ -5,24 +5,23 @@ const axios = require('axios');
 const massive = require('massive');
 const port = 3003;
 
-const controller = require('./controller');
+const {getAll, create, del, update} = require('./controller');
 
 const app = express();
 app.use(bodyParser());
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
-    //   console.log(db)
     app.set('db', db);
   })
   .catch(err => {
     console.log(err);
   });
 
-app.get('/api/product', controller.getAll);
-app.post('/api/product', controller.create);
-app.delete('/api/product/:id', controller.del);
-// app.put('/api/product/:id', controller.update);
+app.get('/api/product', getAll);
+app.post('/api/product', create);
+app.delete('/api/product/:id', del);
+app.put('/api/product-edit/:id', update);
 
 
 

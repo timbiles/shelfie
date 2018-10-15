@@ -9,7 +9,9 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      inventory: []
+      inventory: [],
+      name: '',
+      price: ''
     };
   }
 
@@ -23,27 +25,37 @@ export default class Dashboard extends Component {
     });
   };
 
-  render() {
-    let { inventory } = this.props;
-    // console.log(inventory);
+  handleEdit = (id, e) => {
+    const {name, price, edit} = this.state
+    axios.put(`/api/product-edit/${id}`, {name: name || e.name, price: price || e.price}).then(res => {
+      this.props.get();
+    })
+  }
 
-    let inventoryMap = inventory.map((e, i) => {
+  handleChange = val => {
+    this.setState({name: val})
+  }
+
+  handleChange2 = val => {
+    this.setState({price: val})
+  }
+
+  render() {
+    const { inventory } = this.props;
+    const { edit } = this.state
+
+    let inventoryMap = inventory.map(e => {
       return (
-        <div key={i} className="input-box">
-          <div>
-            <img src={e.img} height="200px" width="300px" />
-          </div>
-          <div>
-            <div>{e.name}</div>
-            <div>${e.price}</div>
-            <button onClick={id => this.handleDelete(e.id)}>Delete</button>
-          </div>
-        </div>
+        <Product key={e.id} item={e} handleDelete={() => this.handleDelete(e.id)}
+        handleEdit={()=> this.handleEdit(e.id, e )}
+        handleChange={(val) => this.handleChange(val)}
+        handleChange2={(val) => this.handleChange2(val)}
+        toggleEdit={()=> this.setState({edit: !edit})}
+        />
       );
     });
     return (
       <div>
-        <Product />
         {inventoryMap}
       </div>
     );
